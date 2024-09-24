@@ -19,6 +19,11 @@ const App = () => {
         style={styles.bgImage}
       />
       <SafeAreaView style={styles.safeAreStyle}>
+        <View>
+          <Text style={{textAlign: 'center', fontSize: 20, marginTop: 15}}>
+            Search
+          </Text>
+        </View>
         <View style={styles.infoViewStyle}>
           <View style={[styles.rowStyle, {marginBottom: 5}]}>
             <Text style={styles.cityText}>Montreal,</Text>
@@ -34,20 +39,36 @@ const App = () => {
             source={require('./assets/images/sun.png')}
             style={styles.centerImage}
           />
-          <Text style={styles.temperatureText}>19º</Text>
-          <Text style={styles.restText}>Mostly Cloudy</Text>
-          <View style={styles.rowStyle}>
-            <Text style={styles.restText}>High</Text>
-            <Text style={styles.restText}>Low</Text>
-          </View>
-          <View style={styles.rowStyle}>
-            <Text style={styles.restText}>Humedad</Text>
-            <Text style={styles.restText}>viento</Text>
-            <Text style={styles.restText}>tiemp</Text>
+          <View
+            style={{
+              alignItems: 'center',
+              width: '100%',
+            }}>
+            <Text style={styles.temperatureText}>19º</Text>
+            <Text style={[styles.restText, {fontSize: 20}]}>Mostly Cloudy</Text>
+            <View style={styles.rowStyle}>
+              <Text style={styles.restText}>High</Text>
+              <Text style={styles.restText}>Low</Text>
+            </View>
+            <View style={styles.rowStyle}>
+              <Text style={styles.restText}>Humedad</Text>
+              <Text style={styles.restText}>viento</Text>
+              <Text style={styles.restText}>tiemp</Text>
+            </View>
           </View>
         </View>
 
         <View style={styles.flatListViewStyle}>
+          <Text>Por hora</Text>
+          <FlatList
+            data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+            renderItem={({item}) => <Text>{item}</Text>}
+            horizontal
+          />
+        </View>
+
+        <View style={styles.flatListViewStyle}>
+          <Text>Semanal</Text>
           <FlatList
             data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
             renderItem={({item}) => <Text>{item}</Text>}
@@ -73,7 +94,7 @@ const styles = StyleSheet.create({
   },
   safeAreStyle: {
     flex: 1,
-    marginTop: Platform.OS === 'android' ? 15 : 0,
+    marginTop: Platform.OS === 'android' ? 10 : 0,
     paddingHorizontal: 10,
   },
   rowStyle: {
@@ -82,18 +103,18 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
   },
   infoViewStyle: {
-    flex: 3,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
   flatListViewStyle: {
-    flex: 1,
+    flex: 0.8,
   },
   centerImage: {
-    width: 220,
-    height: 220,
+    width: 180,
+    height: 180,
     alignSelf: 'center',
-    marginVertical: 25,
+    marginVertical: 10,
   },
   cityText: {
     fontSize: 27,
@@ -105,7 +126,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   temperatureText: {
-    fontSize: 36,
+    fontSize: 45,
     fontWeight: 'bold',
     color: 'white',
   },
